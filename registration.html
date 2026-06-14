@@ -1,0 +1,184 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <link rel="icon" href="src/fav-icon.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<style>
+        .nav-links a {
+            color: black;
+        }
+
+        .registration-section {
+            padding: 40px 8%;
+            background: #f8f9fa;
+        }
+
+        .form-box {
+            width: 100%;
+            max-width: 720px;
+            margin: auto;
+            background: rgba(255, 255, 255, .95);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(59, 130, 246, .12);
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, .06);
+        }
+
+        .form-box h2 {
+            color: #1e293b;
+            text-align: center;
+            margin-bottom: 24px;
+            font-size: 1.75rem;
+            padding-bottom: 12px;
+        }
+
+        .registerBox {
+            margin-bottom: 18px;
+        }
+
+        .registerBox label {
+            display: block;
+            margin-bottom: 10px;
+            color: #475569;
+            font-weight: 600;
+        }
+
+        .registerBox input {
+            width: 100%;
+            padding: 16px;
+            border: 1px solid rgba(148, 163, 184, .18);
+            border-radius: 16px;
+            background: #f8fbff;
+            color: #1e293b;
+            font-family: inherit;
+            font-size: 1rem;
+            outline: none;
+            transition: all .25s ease;
+            box-sizing: border-box;
+        }
+
+        .registerBox input:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, .12);
+        }
+
+        .registerBtn {
+            width: 100%;
+            padding: 16px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: white;
+            background: #3b82f6;
+            border: none;
+            border-radius: 999px;
+            cursor: pointer;
+            transition: all .3s ease;
+            box-shadow: 0 10px 25px rgba(59, 130, 246, .25);
+        }
+
+        .registerBtn:hover {
+            background: #2563eb;
+            transform: translateY(-2px);
+        }
+
+        #message {
+            margin-top: 18px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .registration-section {
+                padding: 20px 4%;
+            }
+
+            .form-box {
+                padding: 28px;
+            }
+        }
+</style>
+
+<body>
+    <div class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <img src="src/Logo-Mediconnect.png" alt="MediConnect" id="logo-mediconnect">
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="docotors.html">Doctors</a></li>
+                <li><a href="appoinments.html">Appointments</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+
+            <button class="nav-btn" onclick="window.location.href='registration.html'">Register Now</button>
+        </nav>
+    </div>
+
+    <section class="page-hero">
+        <div class="page-hero-content">
+            <span class="page-tag">Join MediConnect</span>
+            <h1>Registration</h1>
+            <p>Create your account to book appointments, track services, and connect with trusted doctors.</p>
+        </div>
+    </section>
+
+    <section class="registration-section">
+        <div class="form-box">
+            <form id="registrationForm" class="registrationForm">
+                <h2>Create New Account</h2>
+
+                <div class="registerBox">
+                    <label for="fullname">Full Name :</label>
+                    <input type="text" id="fullname" name="fullname" placeholder="Enter your full name" required>
+                </div>
+
+                <div class="registerBox">
+                    <label for="birthday">Date of Birth :</label>
+                    <input type="date" id="birthday" name="birthday" placeholder="Enter your birthday" required>
+                </div>
+
+                <div class="registerBox">
+                    <label for="nicNum">NIC Number :</label>
+                    <input type="text" id="nicNum" name="nicNum" placeholder="Enter your NIC number">
+                </div>
+
+                <div class="registerBox">
+                    <label for="contactNum">Contact Number :</label>
+                    <input type="tel" id="contactNum" name="contactNum" placeholder="Enter your phone number" required>
+                </div>
+
+                <div class="registerBox">
+                    <label for="email">E-mail :</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email">
+                </div>
+
+                <div class="registerBox">
+                    <label for="password">Password :</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                </div>
+
+                <div class="registerBox">
+                    <label for="confirmPassword">Confirm Password :</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Enter your password again" required>
+                </div>
+
+                <button type="submit" class="registerBtn">Register</button>
+                <p id="message"></p>
+            </form>
+        </div>
+    </section>
+
+    <script src="registration.js"></script>
+</body>
+</html>

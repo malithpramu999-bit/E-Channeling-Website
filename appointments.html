@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book an Appointment</title>
+
+    <link rel="icon" href="src/fav-icon.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f8f9fa;
+            color: #212529;
+            min-height: 100vh;
+        }
+
+        .nav-links a {
+            color: black;
+        }
+
+        /* Two Grid Layout */
+        .booking-layout {
+            /* background: #ffff; */
+            display: grid;
+            grid-template-columns: 7fr 5fr;
+            gap: 30px;
+            align-items: start;
+            padding: 40px;
+        }
+
+        .form-section {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.08);
+            /* border-top: 1px solid #e2e6ef; */
+        }
+
+        .sidebar-section {
+            position: sticky;
+            top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        /* Form-Header */
+        .form-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        #main-header {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #102544;
+            margin-bottom: 10px;
+        }
+
+        #sub-header {
+            color: #6c757d;
+            font-size: 1rem;
+        }
+
+        /* Form Grid */
+        .form-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .email-field,
+        .msg-field,
+        .doctor-field,
+        .btnSubmit-field {
+            grid-column: 1 / -1;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .input-field,
+        .form-select {
+            width: 100%;
+            padding: 16px;
+            border: 1px solid rgba(148, 163, 184, .18);
+            border-radius: 16px;
+            margin-top: 14px;
+            background: #f8fbff;
+            color: #1e293b;
+            font-family: inherit;
+            font-size: 1rem;
+            outline: none;
+            transition: all .25s ease;
+            box-sizing: border-box;
+
+        }
+
+        .input-field:focus,
+        .form-select:focus {
+            outline: none;
+            border-color: #86b7fe;
+            box-shadow: 0 0 0 4px rgba(13, 110, 253, 0.15);
+        }
+
+        textarea.input-field {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        /* Validation Messages - Hidden initially */
+        .invalid-feedback {
+            display: none;
+            color: #dc3545;
+            font-size: 0.875rem;
+            margin-top: 5px;
+            font-weight: 500;
+        }
+
+        #formAlert {
+            display: none;
+            background: #fff3cd;
+            color: #e3ae0e;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            /* border: 1px solid #ffc107; */
+            grid-column: 1 / -1;
+            font-size: 12px;
+        }
+
+        /* Visit Info */
+        .visit-info {
+            padding: 25px;
+            background: #ffff;
+            border-top: 4px solid #0d6efd;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, .04);
+        }
+
+        .visit-info h3 {
+            margin-bottom: 15px;
+            color: #102544;
+        }
+
+        .visit-info ul {
+            padding-left: 20px;
+        }
+
+        .visit-info li {
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: #495057;
+        }
+
+        /* Summary Card - Set to hidden by default */
+        .summary-card {
+            display: none;
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            border-top: 4px solid #3b4555;
+        }
+
+        .summary-card h3 {
+            color: #102544;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 1.3rem;
+        }
+
+        .summary-card p {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #f1f3f5;
+        }
+
+        .summary-card strong {
+            color: #495057;
+        }
+
+        .summary-card span {
+            color: #102544;
+            font-weight: 600;
+        }
+
+        .booking-status {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            text-align: center;
+            padding: 8px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        #paymentBtn {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            background-color: #25c060;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #paymentBtn:hover {
+            background-color: #1fa04f;
+        }
+
+        .booking-reference,
+        #bookingId {
+            text-align: center;
+            font-size: 13px;
+            color: #6c757d;
+            margin-bottom: 18px;
+        }
+
+        .summary-card {
+            animation: summaryAppear 0.5s ease;
+        }
+
+        @keyframes summaryAppear {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .booking-layout {
+                grid-template-columns: 1fr;
+                padding: 30px 20px;
+            }
+
+            .sidebar-section {
+                position: static;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .form-container {
+                grid-template-columns: 1fr;
+            }
+
+            .form-section {
+                padding: 25px;
+            }
+
+            #main-header {
+                font-size: 1.7rem;
+            }
+
+            .summary-card p,
+            .summary-card strong,
+            .summary-card span {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <div class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <img src="src/Logo-Mediconnect.png" alt="MediConnect" id="logo-mediconnect">
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="doctors.html">Doctors</a></li>
+                <li><a href="appointments.html">Appointments</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+
+            <button class="nav-btn" onclick="window.location.href='registration.html'">
+                Register Now
+            </button>
+
+        </nav>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="page-hero">
+        <div class="page-hero-content">
+            <span class="page-tag">
+                Book Your Consultation
+            </span>
+            <h1>Appoinments</h1>
+            <p>
+                Secure your consultation with experienced specialists through our seamless online booking system.
+                Fast, convenient, and designed around your schedule.
+            </p>
+        </div>
+    </section>
+
+    <!-- Two Column Grid -->
+    <div class="booking-layout">
+
+        <!-- LEFT SIDE: Form Section -->
+        <div class="form-section">
+            <div class="form-header">
+                <h2 id="main-header">Book an Appointment</h2>
+                <p id="sub-header">Fill in the details below to schedule your consultation.</p>
+            </div>
+
+            <form id="appointmentForm" action="" method="post" onsubmit="return submitForm()">
+                <div class="form-container">
+
+                    <div class="name-field">
+                        <label for="fullname" class="form-label">Full Name</label>
+                        <input type="text" id="fullname" name="fullname" class="input-field" placeholder="Your Name">
+                        <div class="invalid-feedback">Please enter your full name.</div>
+                    </div>
+                    <div class="phoneNo-field">
+                        <label for="phoneNo" class="form-label">Phone Number</label>
+                        <input type="tel" id="phoneNo" name="phoneNo" class="input-field" placeholder="+94 7X XXX XXXX">
+                        <div class="invalid-feedback">Please enter a valid phone number.</div>
+                    </div>
+                    <div class="email-field">
+                        <label for="email" class="form-label">Email Address</label>
+                        <input type="email" id="email" name="email" class="input-field" placeholder="example@email.com">
+                        <div class="invalid-feedback">Please enter a valid email address.</div>
+                    </div>
+
+                    <div class="doctor-field">
+                        <label class="form-label" for="selectDoctor">Select Doctor</label>
+                        <select class="form-select" id="selectDoctor">
+                            <option value="" disabled selected>Choose a doctor...</option>
+                            <option>Dr. Nimali Perera (Pediatrician)</option>
+                            <option>Dr. Krishan Silva (Neurologist)</option>
+                            <option>Dr. Nishanthi Fernando (Pediatric Surgery)</option>
+                            <option>Dr. Surendra Kularathne (General Practitioner)</option>
+                            <option>Dr. Amila Navarathne (Psychiatrist)</option>
+                            <option>Dr. Mohomad Faheem (Orthopedic Surgeon)</option>
+                            <option>Dr. Kumaran Ponnambalam (Pediatrician)</option>
+                            <option>Dr. Manura Rajapaksha (Cardiologist)</option>
+                            <option>Dr. Anil Kannangara (Gynecologist)</option>
+                            <option>Dr. Subash Pathirana (Dermatologist)</option>
+                            <option>Dr. Manuwarna Samarasekara (General Surgeon)</option>
+                            <option>Dr. Abdul Hussain (Ophthalmologist)</option>
+                            <option>Dr. Lakshmini Rajakrishnan (General Surgeon)</option>
+                            <option>Dr. Dewmini Thuduwewaththa (General Practitioner)</option>
+                        </select>
+                        <div class="invalid-feedback">Please select a doctor.</div>
+                    </div>
+
+                    <div class="date-field">
+                        <label class="form-label" for="appoinmentDate">Appointment Date</label>
+                        <input type="date" id="appoinmentDate" class="input-field">
+                        <div class="invalid-feedback">Please choose a valid date.</div>
+                    </div>
+                    <div class="time-field">
+                        <label class="form-label" for="selectTime">Preferred Time Slot</label>
+                        <select class="form-select" id="selectTime">
+                            <option value="" disabled selected>Select time...</option>
+                            <option>Morning (09:00 AM - 12:00 PM)</option>
+                            <option>Afternoon (01:00 PM - 04:00 PM)</option>
+                            <option>Evening (05:00 PM - 08:00 PM)</option>
+                        </select>
+                        <div class="invalid-feedback">Please select a time slot.</div>
+                    </div>
+
+                    <div class="msg-field">
+                        <label for="message" class="form-label">Message / Symptoms (Optional)</label>
+                        <textarea id="message" name="message" class="input-field" rows="4"
+                            placeholder="Briefly describe your condition..."></textarea>
+                    </div>
+
+                    <div id="formAlert">
+                        Please complete all required fields correctly.
+                    </div>
+
+                    <div class="btnSubmit-field">
+                        <button type="submit" id="btnSubmit">Confirm Appointment</button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+
+        <!-- RIGHT SIDE: Sidebar (Visit Info & Summary Card) -->
+        <div class="sidebar-section">
+
+            <div class="visit-info">
+                <h3>Before Your Visit</h3>
+                <ul>
+                    <li>Bring your NIC card for identity verification.</li>
+                    <li>Keep your booking reference number available.</li>
+                    <li>Arrive at least 10 minutes early.</li>
+                    <li>Carry previous medical reports or prescriptions.</li>
+                    <li>You can cancel up to 2 hours before your slot.</li>
+                    <li>Wear a mask if you have cold or flu symptoms.</li>
+                </ul>
+            </div>
+
+            <div class="summary-card">
+                <h3>Appointment Summary</h3>
+                <div class="booking-status">
+                    ✓ Ready for Payment
+                </div>
+                <p><strong>Name:</strong> <span id="sumName">-</span></p>
+                <p><strong>Doctor:</strong> <span id="sumDoctor">-</span></p>
+                <p><strong>Date:</strong> <span id="sumDate">-</span></p>
+                <p><strong>Time:</strong> <span id="sumTime">-</span></p>
+                <p><strong>Fee:</strong> <span id="sumFee">-</span></p>
+                <p class="booking-reference">
+                    Ref No: <span id="bookingId"> ECH-45821 </span>
+                </p>
+
+                <button id="paymentBtn">
+                    Proceed to Payment
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+
+    <footer>
+        <!-- Footer Content -->
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="booking.js"></script>
+</body>
+
+</html>

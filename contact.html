@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    
+    <link rel="icon" href="src/fav-icon.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .nav-links a {
+            color: black;
+        }
+        
+        .contact-section {
+            padding: 10px 6%;
+            background: #ffff
+        }
+
+        .contact-section::after {
+            content: "";
+            display: table;
+            clear: both
+        }
+
+        .contact-section h1 {
+            text-align: center;
+            color: #1e293b;
+            margin-top: 0;
+            margin-bottom: 40px;
+            font-size: 3rem
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 10px;
+            max-width: 1200px;
+            margin: auto;
+            align-items: start;
+        }
+
+        .form-box {
+            width: 80%;
+            background: rgba(255, 255, 255, .95);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(59, 130, 246, .12);
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, .06)
+        }
+
+        .form-box h2 {
+            color: #1e293b;
+            text-align: center;
+            margin-bottom: 24px;
+            font-size: 1.75rem;
+            padding-bottom: 12px
+        }
+
+        .form-box input,
+        .form-box textarea {
+            width: 100%;
+            padding: 16px;
+            border: 1px solid rgba(148, 163, 184, .18);
+            border-radius: 16px;
+            margin-top: 14px;
+            background: #f8fbff;
+            color: #1e293b;
+            font-family: inherit;
+            font-size: 1rem;
+            outline: none;
+            transition: all .25s ease;
+            box-sizing: border-box
+        }
+
+        .form-box input:focus,
+        .form-box textarea:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, .12)
+        }
+
+        .form-box textarea {
+            min-height: 160px;
+            resize: vertical
+        }
+
+        .working-section {
+            width: 100%;
+            background: rgba(255, 255, 255, .95);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(59, 130, 246, .12);
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, .06)
+        }
+
+        .working-title {
+            margin: 0 0 32px;
+            color: #1e293b;
+            font-size: 2rem;
+            text-align: center
+        }
+
+        .hours-table {
+            width: 100%;
+            table-layout: fixed;
+            border-collapse: collapse;
+            border-spacing: 0;
+            background: rgba(248, 251, 255, .95);
+            border: 1px solid rgba(59, 130, 246, .12);
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, .05);
+        }
+
+        .hours-table th {
+            background: #3b82f6;
+            color: white;
+            padding: 18px;
+            font-size: 1rem;
+            text-align: center;
+            border: 1px solid rgba(59, 130, 246, .12);
+        }
+
+        .hours-table td {
+            padding: 16px;
+            text-align: center;
+            color: #1e293b;
+            border: 1px solid rgba(59, 130, 246, .12);
+            background: #ffffff;
+        }
+
+        .faq-title {
+            margin-top: 70px;
+            text-align: center;
+            color: #1e293b;
+            font-size: 2.5rem
+        }
+
+        .faq {
+            max-width: 900px;
+            margin: 40px auto 0;
+            padding: 0 20px;
+            display: grid;
+            gap: 10px;
+            margin-bottom: 40px;
+        }
+
+        .question {
+            background: white;
+            border: 1px solid rgba(59, 130, 246, .12);
+            border-radius: 30px;
+            padding: 25px 22px;
+            color: #1e293b;
+            font-size: 1rem;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, .05)
+        }
+
+        .answer {
+            display: none;
+            background: rgba(255, 255, 255, .95);
+            padding: 18px;
+            color: #475569;
+            line-height: 1.7;
+        }
+
+        .arrow {
+            font-size: 1.1rem;
+            color: #3b82f6;
+            transition: .3s
+        }
+
+        @media (max-width: 992px) {
+            .contact-section {
+                padding: 10px 4%;
+            }
+
+            .contact-section h1 {
+                font-size: 2.5rem;
+                margin-bottom: 30px;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .form-box,
+            .working-section {
+                width: 100%;
+                padding: 32px;
+            }
+
+            .hours-table th,
+            .hours-table td {
+                padding: 14px;
+                font-size: 0.95rem;
+            }
+
+            .faq {
+                padding: 0 10px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .contact-section {
+                padding: 10px 3%;
+            }
+
+            .contact-section h1 {
+                font-size: 2.25rem;
+                margin-bottom: 24px;
+            }
+
+            .form-box,
+            .working-section {
+                padding: 28px;
+                border-radius: 24px;
+            }
+
+            .contact-grid {
+                gap: 20px;
+            }
+
+            .form-box input,
+            .form-box textarea {
+                padding: 14px;
+            }
+
+            .hours-table th,
+            .hours-table td {
+                padding: 12px;
+                font-size: 0.9rem;
+            }
+
+            .faq-title {
+                margin-top: 50px;
+                font-size: 2rem;
+            }
+
+            .question {
+                padding: 18px 16px;
+                font-size: 0.95rem;
+            }
+
+            .answer {
+                padding: 16px;
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <img src="src/Logo-Mediconnect.png" alt="MediConnect" id="logo-mediconnect">
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="doctors.html">Doctors</a></li>
+                <li><a href="appointments.html">Appointments</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+
+            <button class="nav-btn" onclick="window.location.href='registration.html'">
+                Register Now
+            </button>
+
+        </nav>
+    </div>
+
+    <section class="page-hero">
+        <div class="page-hero-content">
+            <span class="page-tag">
+                We're Here to Help
+            </span>
+            <h1>Contact Us</h1>
+            <p>
+                Don't hesitate to reach out to us for any inquiries, support, or feedback.
+            </p>
+        </div>
+    </section>
+
+
+    <section class="contact-section">
+        <div class="contact-grid">
+            <div class="form-box">
+                <h2>Contact Now</h2>
+
+                <form id="contactForm" action="mailto:yourmail@gmail.com" method="post" enctype="text/plain">
+                    <input type="text" id="fname" placeholder="First Name">
+                    <br><br>
+                    <input type="text" id="lname" placeholder="Last Name">
+                    <br><br>
+                    <input type="email" id="email" placeholder="Email">
+                    <br><br>
+                    <textarea id="message" placeholder="Enter Message"></textarea>
+                    <br><br>
+                    <button type="submit" id="btnSubmit">
+                        Send
+                    </button>
+                </form>
+            </div>
+
+            <!-- <div class="info-box">
+            <h2>Contact Info</h2>
+            <p>Address : Colombo</p>
+            <p>Phone : 0771234567</p>
+            <p>Email : abc@gmail.com</p>
+            <img src="image/Map.jpg">
+            </div> -->
+
+            <div class="working-section">
+                <h2 class="working-title">
+                    Working Hours
+                </h2>
+
+                <table class="hours-table">
+                    <tr>
+                        <th colspan="2">Business Hours</th>
+                    </tr>
+                    <tr>
+                        <td>Monday - Friday</td>
+                        <td>8.00 AM - 5.00 PM</td>
+                    </tr>
+                    <tr>
+                        <td>Saturday</td>
+                        <td>9.00 AM - 2.00 PM</td>
+                    </tr>
+                    <tr>
+                        <td>Sunday</td>
+                        <td>Closed</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            Emergency Services Available 24/7
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <h2 class="faq-title">
+            FAQ
+        </h2>
+
+        <div class="faq">
+            <h3 class="question">
+                How can I make an appointment?
+                <span class="arrow">►</span>
+            </h3>
+
+            <div class="answer">
+                You can contact us by phone or submit the contact form.
+            </div>
+            
+            <h3 class="question">
+                What are your working hours?
+                <span class="arrow">►</span>
+            </h3>
+
+            <div class="answer">
+                Monday to Friday 8.00 AM - 5.00 PM
+            </div>
+
+            <h3 class="question">
+                Do you provide online services?
+                <span class="arrow">►</span>
+            </h3>
+
+            <div class="answer">
+                Yes, selected services are available online.
+            </div>
+
+        </div>
+
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="contact.js"></script>
+</body>
+
+</html>

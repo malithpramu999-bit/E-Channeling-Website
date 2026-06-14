@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services</title>
+
+    <link rel="icon" href="src/fav-icon.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
+    <script src="services.js"></script>
+
+    <style>
+        .nav-links a {
+            color: black;
+        }
+        
+        .searchbar {
+            padding: 40px 8%;
+            background: #fff;
+        }
+
+        .search-container {
+            max-width: 900px;
+            margin: auto;
+            position: relative;
+            background: rgba(255, 255, 255, .75);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(59, 130, 246, .12);
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, .06);
+            transition: .3s ease;
+        }
+
+        #searchbox {
+            width: 100%;
+            border: none;
+            outline: none;
+            background: transparent;
+            padding: 22px 25px 22px 65px;
+            font-size: 1rem;
+            color: #1e293b;
+
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2rem;
+        }
+
+        .search-container:hover {
+            box-shadow: 0 15px 40px rgba(59, 130, 246, .12);
+        }
+
+        .search-container:focus-within {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 5px rgba(59, 130, 246, .08);
+        }
+
+        .search-container input {
+            width: 100%;
+            border: none;
+            outline: none;
+            background: transparent;
+            padding: 22px 25px 22px 65px;
+            font-size: 1rem;
+            color: #1e293b;
+        }
+
+        .search-container input::placeholder {
+            color: #94a3b8;
+        }
+
+        .allservices{
+            max-width:1400px;
+            margin:auto;
+            padding:20px;
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+            gap:30px;
+            justify-content:center;
+            justify-items:stretch;
+            align-items:stretch;
+            margin-top: 50px;
+            margin-bottom: 100px;
+        
+        }
+
+        .service-card{
+            width:100%;
+            max-width:375px;
+            margin:0;
+            display:flex;
+            flex-direction:column;
+            justify-content:space-between;
+            cursor:pointer;
+        }
+
+        /* .service-method{
+            background:white;
+            padding:20px;
+            border-radius:30px;
+            box-shadow:0 2px 10px rgba(0,0,0,0.1);
+            transition:0.5s;
+        }
+
+        .service-method:hover{
+            transform:translateY(-5px);
+            background-color: #ffffff;
+        }
+        .method:hover{
+            transform:translateY(-5px);
+            background-color: #ffffff;
+        }
+
+        .method h2{
+            color:#0077b6;
+            margin-bottom:10px;
+        }
+
+        .method p{
+            color:#555;
+            line-height:1.5;
+        }
+
+        .method {
+            background: white;
+            padding: 20px;
+            border-radius: 30px;
+            transition: 0.5s;
+            cursor: pointer; 
+        }
+        .image{
+            width:100%;
+            height:260px;
+            overflow:hidden;
+            border-radius:22px;
+            margin-bottom:20px;
+        }
+        .image img{
+            width:100%;
+            height:100%;
+            object-fit:cover;
+            transition:.4s ease;
+        }
+
+        .image:hover img{
+            transform:scale(2.05);
+        }  */
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <img src="src/Logo-Mediconnect.png" alt="MediConnect" id="logo-mediconnect">
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="doctors.html">Doctors</a></li>
+                <li><a href="appointments.html">Appointments</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+
+            <button class="nav-btn" onclick="window.location.href='registration.html'">
+                Register Now
+            </button>
+        </nav>
+    </div>
+
+    <section class="page-hero">
+        <div class="page-hero-content">
+            <span class="page-tag">
+                Quality Care, Simplified
+            </span>
+
+            <h1>Services</h1>
+
+            <p>
+                Discover a wide range of healthcare services designed to support your
+                 well-being and medical needs.
+
+        </div>
+    </section>
+
+
+    <div class="searchbar">
+        <div class="search-container">
+            <span class="search-icon"><img src="src/search.png" style="width: 20px;"></span>
+            <input type="text" id="searchbox" placeholder="Search a service..." onkeyup="filterServices()">
+        </div>
+    </div>
+
+    <section class="allservices">
+
+        <div class="service-card" onclick="bookAppointment(this)">
+            <div class="service-image">
+                <img src="src/Laboratory Services.jpeg" alt="Laboratory Services">
+            </div>
+            <h3>Laboratory Services</h3>
+            <p>Blood tests, urine tests, medical screenings, and diagnostic services.</p>
+        </div>
+
+        <div class="service-card" onclick="bookAppointment(this)">
+            <div class="service-image">
+                <img alt="Dental Clinic" src="src/dental.jpeg">
+            </div>
+            <h3>Dental Clinic</h3>
+            <p>Dental checkups, cleaning, fillings, root canals, and oral surgery.</p>
+        </div>
+
+        <div class="service-card" onclick="bookAppointment(this)">
+            <div class="service-image">
+                <img alt="Eye Clinic" src="src/Eye-Clinic.jpeg">
+            </div>
+            <h3>Eye Clinic</h3>
+            <p>Vision testing, eye examinations, cataract screening, and treatments.</p>
+        </div>
+
+        <div class="service-card" onclick="bookAppointment(this)">
+            <div class="service-image">
+                <img alt="Cardiology" src="src/Cardiology.png">
+            </div>
+            <h3>Cardiology</h3>
+            <p>Heart health consultations, ECG, stress tests, and cardiac treatments.</p>
+        </div>
+
+        <div class="service-card" onclick="bookAppointment(this)">
+            <div class="service-image">
+                <img alt="Neurology" src="src/neurology unit.jpeg">
+            </div>
+            <h3>Neurology</h3>
+            <p>Diagnosis and treatment of brain, spinal cord, and nervous system disorders.</p>
+        </div>
+
+        <div class="service-card" onclick="bookAppointment(this)">
+            <div class="service-image">
+                <img alt="Pediatric Care" src="src/pediatric unit.jpeg">
+            </div>
+            <h3>Pediatric Care</h3>
+            <p>Healthcare services for infants, children, and adolescents.</p>
+        </div>
+
+        <div class="service-card" onclick="bookAppointment(this)">
+            <div class="service-image">
+                <img alt="Orthopedic Clinic" src="src/Orthopedic Clinic.png">
+            </div>
+            <h3>Orthopedic Clinic</h3>
+            <p>Treatment for bone, joint, muscle, and sports-related injuries.</p>
+        </div>
+
+        <div class="service-card" onclick="bookAppointment(this)">
+            <div class="service-image">
+                <img alt="Emergency Care" src="src/Emergancy-services.jpeg">
+            </div>
+            <h3>Emergency Care</h3>
+            <p>24/7 emergency medical services and urgent care support.</p>
+        </div>
+
+        <div class="service-card" onclick="bookAppointment(this)">
+            <div class="service-image">
+                <img alt="Vaccination Center" src="src/Vaccination Center.jpeg">
+            </div>
+            <h3>Vaccination Center</h3>
+            <p>Childhood vaccinations, travel vaccines, and immunization services.</p>
+        </div>
+
+    </section>
+
+</body>
+
+</html>

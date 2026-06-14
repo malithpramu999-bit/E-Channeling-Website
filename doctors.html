@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Doctors</title>
+
+    <link rel="icon" href="src/fav-icon.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .nav-links a {
+            color: black;
+        }
+        
+        .doctor-search-section {
+            padding: 40px 8%;
+            background: #fff;
+        }
+
+        .search-container {
+            max-width: 900px;
+            margin: auto;
+            position: relative;
+            background: rgba(255, 255, 255, .75);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(59, 130, 246, .12);
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, .06);
+            transition: .3s ease;
+        }
+
+        .search-container:hover {
+            box-shadow: 0 15px 40px rgba(59, 130, 246, .12);
+        }
+
+        .search-container:focus-within {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 5px rgba(59, 130, 246, .08);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2rem;
+        }
+
+        .search-container input {
+            width: 100%;
+            border: none;
+            outline: none;
+            background: transparent;
+            padding: 22px 25px 22px 65px;
+            font-size: 1rem;
+            color: #1e293b;
+        }
+
+        .search-container input::placeholder {
+            color: #94a3b8;
+        }
+
+        /* Doctor Grid */
+        .doctor-card {
+            background: rgba(255, 255, 255, .8);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(59, 130, 246, .12);
+            border-radius: 30px;
+            padding: 25px;
+            max-width: 380px;
+            transition: all .4s ease;
+            box-shadow: 0 10px 25px rgba(15, 23, 42, .06);
+            overflow: hidden;
+        }
+
+        .doctor-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(15, 23, 42, .12);
+            border-color: rgba(59, 130, 246, .25);
+        }
+
+        .doctor-image {
+            width: 100%;
+            height: 260px;
+            overflow: hidden;
+            border-radius: 22px;
+            margin-bottom: 20px;
+        }
+
+        .doctor-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: .4s ease;
+        }
+
+        .doctor-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .doctor-image {
+            width: 100%;
+            height: 260px;
+            overflow: hidden;
+            border-radius: 22px;
+            margin-bottom: 20px;
+        }
+
+        .doctor-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: .4s ease;
+        }
+
+        .doctor-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .doctor-info h3 {
+            color: #1e293b;
+            font-size: 1.7rem;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .specialty {
+            display: block;
+            width: max-content;
+            margin: 0 auto 25px;
+            padding: 8px 18px;
+            border-radius: 50px;
+            background: #dbeafe;
+            color: #2563eb;
+            font-weight: 600;
+            font-size: .9rem;
+        }
+
+        .doctor-details {
+            margin-bottom: 25px;
+        }
+
+        .doctor-details p {
+            color: #64748b;
+            line-height: 1.8;
+            margin-bottom: 8px;
+        }
+
+        .doctor-details strong {
+            color: #1e293b;
+        }
+
+        .doctor-btn {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 20px;
+            background: #3b82f6;
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: .3s ease;
+        }
+
+        .doctor-btn:hover {
+            background: #2563eb;
+            transform: translateY(-2px);
+        }
+
+        .docGrid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 380px));
+            justify-content: center;
+            gap: 35px;
+            max-width: 1400px;
+            margin: auto;
+            margin-bottom: 80px;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="header">
+
+        <nav class="navbar">
+
+            <div class="logo">
+                <img src="src/Logo-Mediconnect.png" alt="MediConnect" id="logo-mediconnect">
+            </div>
+
+            <ul class="nav-links">
+
+                <li><a href="index.html">Home</a></li>
+                <li><a href="doctors.html">Doctors</a></li>
+                <li><a href="appointments.html">Appointments</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+
+            </ul>
+
+            <button class="nav-btn" onclick="window.location.href='registration.html'">
+                Register Now
+            </button>
+
+        </nav>
+
+    </div>
+
+    <section class="page-hero">
+
+        <div class="page-hero-content">
+
+            <span class="page-tag">
+                Meet Our Specialists
+            </span>
+
+            <h1>Our Doctors</h1>
+
+            <p>
+                Experienced healthcare professionals ready to provide
+                quality medical care and consultations.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <section class="doctor-search-section">
+
+        <div class="search-container">
+            <span class="search-icon"><img src="src/search.png" style="width: 20px;"></span>
+            <input type="text" id="searchDoc" placeholder="Search doctors, specialties, or hospitals...">
+        </div>
+
+    </section>
+
+
+
+    <dic class="docGrid">
+
+        <div class="doctor-card">
+
+            <div class="doctor-image">
+                <img src="src/doc01pediatrician.png" alt="Doctor">
+            </div>
+
+            <div class="doctor-info">
+
+                <h3>Dr. Nimali Perera</h3>
+
+                <span class="specialty">
+                    Pediatrician
+                </span>
+
+                <div class="doctor-details">
+
+                    <p><strong>Age:</strong> 39</p>
+
+                    <p><strong>Experience:</strong> 11 Years</p>
+
+                    <p><strong>Education:</strong> MBBS, MD (Paediatrics & Child Health)</p>
+
+                    <p><strong>Email:</strong> nimali@email.com</p>
+
+                </div>
+
+                <button class="doctor-btn">
+                    View Profile
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+
+        <div class="doctor-card">
+
+            <div class="doctor-image">
+                <img src="src/doc02neurologist.png" alt="Doctor">
+            </div>
+
+            <div class="doctor-info">
+
+                <h3>Dr. Krishan Silva</h3>
+
+                <span class="specialty">Neurologist</span>
+
+                <div class="doctor-details">
+                    <p><strong>Age:</strong> 53</p>
+                    <p><strong>Experience:</strong> 35 Years</p>
+                    <p><strong>Education:</strong> MBBS, MD (Neurology)</p>
+                    <p><strong>Email:</strong> krisahn@email.com</p>
+                </div>
+
+                <button class="doctor-btn">View Profile</button>
+
+            </div>
+
+        </div>
+
+        <div class="doctor-card">
+
+            <div class="doctor-image">
+                <img src="src/doc03Pediactric_Surgeon.png" alt="Doctor">
+            </div>
+
+            <div class="doctor-info">
+                <h3>Dr. Nishanthi Fernando</h3>
+                <span class="specialty">Pediatric Surgery</span>
+                <div class="doctor-details">
+                    <p><strong>Age:</strong> 45</p>
+                    <p><strong>Experience:</strong> 19 Years</p>
+                    <p><strong>Education:</strong> MBBS, MS (General Surgery), MCh (Pediatric Surgery)</p>
+                    <p><strong>Email:</strong> nishanthi@email.com</p>
+                </div>
+
+                <button class="doctor-btn">View Profile</button>
+
+            </div>
+
+        </div>
+
+        <div class="doctor-card">
+
+            <div class="doctor-image">
+                <img src="src/doc4general_psysician.png" alt="Doctor">
+            </div>
+
+            <div class="doctor-info">
+                <h3>Dr. Surendra Kularathne</h3>
+                <span class="specialty">General Practitioner</span>
+
+                <div class="doctor-details">
+                    <p><strong>Age:</strong> 29</p>
+                    <p><strong>Experience:</strong> 2 Years</p>
+                    <p><strong>Education:</strong> MBBS</p>
+                    <p><strong>Email:</strong> surendra@email.com</p>
+                </div>
+
+                <button class="doctor-btn">View Profile</button>
+
+            </div>
+
+        </div>
+
+        <div class="doctor-card">
+
+            <div class="doctor-image">
+                <img src="src/doc5psychiatrist.png" alt="Doctor">
+            </div>
+
+            <div class="doctor-info">
+                <h3>Dr. Amila Navarathne</h3>
+                <span class="specialty">Psychiatrist</span>
+
+                <div class="doctor-details">
+                    <p><strong>Age:</strong> 59</p>
+                    <p><strong>Experience:</strong> 35 Years</p>
+                    <p><strong>Education:</strong> MBBS, MD (Psychiatry)</p>
+                    <p><strong>Email:</strong> amila@email.com</p>
+                </div>
+
+                <button class="doctor-btn">View Profile</button>
+
+            </div>
+
+        </div>
+
+        <div class="doctor-card">
+
+            <div class="doctor-image">
+                <img src="src/doc06othopedic_surgeon.png" alt="Doctor">
+            </div>
+
+            <div class="doctor-info">
+                <h3>Dr. Mohomad Faheem</h3>
+                <span class="specialty">Orthopedic Surgeon</span>
+
+                <div class="doctor-details">
+                    <p><strong>Age:</strong> 54</p>
+                    <p><strong>Experience:</strong> 28 Years</p>
+                    <p><strong>Education:</strong> MBBS, MS (Orthopedics)</p>
+                    <p><strong>Email:</strong> faheem@email.com</p>
+                </div>
+
+                <button class="doctor-btn">View Profile</button>
+
+            </div>
+
+        </div>
+
+        <div class="doctor-card">
+
+            <div class="doctor-image">
+                <img src="src/doc07pediactrician.png" alt="Doctor">
+            </div>
+
+            <div class="doctor-info">
+                <h3>Dr. Kumaran Ponnambalam</h3>
+                <span class="specialty">Pediatrician</span>
+                <div class="doctor-details">
+                    <p><strong>Age:</strong> 55</p>
+                    <p><strong>Experience:</strong> 29 Years</p>
+                    <p><strong>Education:</strong> MBBS, MD (Pediatrics)</p>
+                    <p><strong>Email:</strong> kumaran@email.com</p>
+                </div>
+
+                <button class="doctor-btn">View Profile</button>
+
+            </div>
+
+        </div>
+
+        <div class="doctor-card">
+
+            <div class="doctor-image">
+                <img src="src/doc08cadiologist.png" alt="Doctor">
+            </div>
+
+            <div class="doctor-info">
+                <h3>Dr. Manura Rajapaksha</h3>
+                <span class="specialty">Cardiologist</span>
+                <div class="doctor-details">
+                    <p><strong>Age:</strong> 45</p>
+                    <p><strong>Experience:</strong> 17 Years</p>
+                    <p><strong>Education:</strong> MBBS, MD (Cardiology)</p>
+                    <p><strong>Email:</strong> manura@email.com</p>
+                </div>
+
+                <button class="doctor-btn">View Profile</button>
+
+            </div>
+
+        </div>
+
+        <div class="doctor-card">
+
+            <div class="doctor-image">
+                <img src="src/doc09gynocologist.png" alt="Doctor">
+            </div>
+
+            <div class="doctor-info">
+                <h3>Dr. Anil Kannangara</h3>
+                <span class="specialty">Gynecologist</span>
+                <div class="doctor-details">
+                    <p><strong>Age:</strong> 42</p>
+                    <p><strong>Experience:</strong> 16 Years</p>
+                    <p><strong>Education:</strong> MBBS, MD/MS (Obstetrics &amp; Gynecology)</p>
+                    <p><strong>Email:</strong> anil@email.com</p>
+                </div>
+
+                <button class="doctor-btn">View Profile</button>
+
+            </div>
+
+        </div>
+
+        <div class="doctor-card">
+
+            <div class="doctor-image">
+                <img src="src/doc10dematologist.png" alt="Doctor">
+            </div>
+
+            <div class="doctor-info">
+                <h3>Dr. Subash Pathirana</h3>
+                <span class="specialty">Dermatologist</span>
+                <div class="doctor-details">
+                    <p><strong>Age:</strong> 36</p>
+                    <p><strong>Experience:</strong> 9 Years</p>
+                    <p><strong>Education:</strong> MBBS, MD (Dermatology)</p>
+                    <p><strong>Email:</strong> subash@email.com</p>
+                </div>
+
+                <button class="doctor-btn">View Profile</button>
+
+            </div>
+
+        </div>
+
+        <div class="doctor-card">
+
+            <div class="doctor-image">
+                <img src="src/doc11General_Surgeon.png" alt="Doctor">
+            </div>
+
+            <div class="doctor-info">
+                <h3>Dr. Manuwarna Samarasekara</h3>
+                <span class="specialty">General Surgeon</span>
+                <div class="doctor-details">
+                    <p><strong>Age:</strong> 41</p>
+                    <p><strong>Experience:</strong> 15 Years</p>
+                    <p><strong>Education:</strong> MBBS, MS (General Surgery)</p>
+                    <p><strong>Email:</strong> manuwarna@email.com</p>
+                </div>
+
+                <button class="doctor-btn">View Profile</button>
+
+            </div>
+
+        </div>
+
+        <div class="doctor-card">
+
+            <div class="doctor-image">
+                <img src="src/doc12Ophthalmologist.png" alt="Doctor">
+            </div>
+
+            <div class="doctor-info">
+                <h3>Dr. Abdul Hussain</h3>
+                <span class="specialty">Ophthalmologist</span>
+                <div class="doctor-details">
+                    <p><strong>Age:</strong> 56</p>
+                    <p><strong>Experience:</strong> 30 Years</p>
+                    <p><strong>Education:</strong> MBBS, MS (Ophthalmology)</p>
+                    <p><strong>Email:</strong> hussain@email.com</p>
+                </div>
+
+                <button class="doctor-btn">View Profile</button>
+
+            </div>
+
+        </div>
+
+        <div class="doctor-card">
+
+            <div class="doctor-image">
+                <img src="src/doc13General_Surgeon.png" alt="Doctor">
+            </div>
+
+            <div class="doctor-info">
+                <h3>Dr. Lakshmini Rajakrishnan</h3>
+                <span class="specialty">General Surgeon</span>
+                <div class="doctor-details">
+                    <p><strong>Age:</strong> 32</p>
+                    <p><strong>Experience:</strong> 7 Years</p>
+                    <p><strong>Education:</strong> MBBS, MS (General Surgery)</p>
+                    <p><strong>Email:</strong> lakshmini@email.com</p>
+                </div>
+
+                <button class="doctor-btn">View Profile</button>
+
+            </div>
+
+        </div>
+
+        <div class="doctor-card">
+
+            <div class="doctor-image">
+                <img src="src/doc14GeneralPsysician.png" alt="Doctor">
+            </div>
+
+            <div class="doctor-info">
+                <h3>Dr. Dewmini Thuduwewaththa</h3>
+                <span class="specialty">General Practitioner</span>
+                <div class="doctor-details">
+                    <p><strong>Age:</strong> 27</p>
+                    <p><strong>Experience:</strong> 1 Year</p>
+                    <p><strong>Education:</strong> MBBS</p>
+                    <p><strong>Email:</strong> dewmini@email.com</p>
+                </div>
+
+                <button class="doctor-btn">View Profile</button>
+
+            </div>
+
+        </div>
+
+        </div>
+
+        <script src="doctors.js"></script>
+
+</body>
+
+</html>

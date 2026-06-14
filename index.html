@@ -1,11 +1,336 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-Channeling</title>
+    <title>MediConnect</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" href="src/fav-icon.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    
+
+    <script>
+        let name = prompt("Please enter your name:", "Lakindu");
+        alert(`Hi ${name}, Welcome to MediConnect! Your trusted healthcare companion.`);
+    </script>
+
+
+    <div class="header">
+
+        <nav class="navbar">
+
+            <div class="logo">
+                <img src="src/Logo-Mediconnect.png" alt="MediConnect" id="logo-mediconnect">
+            </div>
+
+            <ul class="nav-links">
+
+                <li><a href="index.html">Home</a></li>
+                <li><a href="doctors.html">Doctors</a></li>
+                <li><a href="appointments.html">Appointments</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+
+            </ul>
+
+            <button class="nav-btn" onclick="window.location.href='registration.html'">
+                Register Now
+            </button>
+
+        </nav>
+
+    </div>
+
+
+    <!-- hero section -->
+
+
+    <section class="hero">
+
+        <!-- Background Video -->
+        <video autoplay muted loop playsinline>
+
+            <source src="src/hero-video.mp4" type="video/mp4">
+
+        </video>
+
+        <!-- Dark Overlay -->
+        <div class="overlay"></div>
+
+        <!-- Hero Content -->
+        <div class="hero-content">
+
+            <h1>
+                Healthcare
+                <span>Made Simple</span>
+            </h1>
+
+            <p>
+                Book appointments with trusted doctors anytime, anywhere.
+                Access experienced specialists, schedule consultations,
+                and receive quality healthcare from the comfort of your home.
+            </p>
+
+            <div class="hero-buttons">
+
+                <button class="hero-btn-secondary" onclick=findDoctors()>
+                    Find Doctors
+                </button>
+
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+
+
+    <!-- Services section -->
+
+
+    <div class="services-header-large">
+
+        <h2>
+            <img src="src/rapid.png" alt="Services Icon" class="services-icon">
+            Quick Services
+        </h2>
+
+        <div class="services-container">
+
+            <div class="service-card" onclick=clickServices()>
+
+                <div class="service-image">
+
+                    <img src="src/Emergancy-services.jpeg" alt="Emergency Care">
+
+                </div>
+
+                <h3>Emergency Care</h3>
+
+                <p>
+                    Expert emergency treatment and immediate medical
+                    assistance whenever you need it.
+                </p>
+
+            </div>
+            <div class="service-card" onclick=clickServices()>
+
+                <div class="service-image">
+
+                    <img src="src/Vaccination Center.jpeg" alt="Emergency Care">
+
+                </div>
+
+                <h3>Vaccination Center</h3>
+
+                <p>
+                    Professional vaccination services supporting 
+                    lifelong health and disease prevention.
+                </p>
+
+            </div>
+
+
+            <div class="service-card" onclick=clickServices()>
+
+                <div class="service-image">
+
+                    <img src="src/Laboratory Services.jpeg" alt="Emergency Care">
+
+                </div>
+
+                <h3>Laboratory Services</h3>
+
+                <p>
+                    Accurate diagnostic testing and laboratory 
+                    services to support timely medical decisions.
+                </p>
+
+            </div>
+
+            <!-- <div class="service-card">
+
+        <div class="service-image">
+
+            <img src="src/Emergancy-services.jpeg"
+                alt="Emergency Care">
+
+        </div>
+
+        <h3>Emergency Care</h3>
+
+        <p>
+            Expert emergency treatment and immediate medical
+            assistance whenever you need it.
+        </p>
+
+        </div> -->
+        </div>
+    </div>
+
+    <section class="why-us">
+        <div class="services-header-small">
+            <h2>
+                <img src="src/help.png" alt="Services Icon" class="services-icon">
+                Why Choose Us?
+            </h2>
+        </div>
+
+        <div class="why-us-container">
+
+            <div class="why-image">
+
+                <img src="src/about_us.png" alt="Doctor Consultation">
+
+            </div>
+
+            <div class="why-content">
+
+                <h2>
+                    Simple & <span>Accessible</span>
+                </h2>
+
+                <p>
+                    MediConnect connects patients with trusted healthcare
+                    professionals through a secure and seamless digital
+                    experience. Book appointments, access specialists,
+                    and manage your healthcare from anywhere.
+                </p>
+
+                <div class="why-features">
+
+                    <div class="feature-item">
+
+                        <div class="feature-icon">
+                            <img src="src/specialists.png" alt="Verified Specialists Icon" class="feature-icon-image">
+                        </div>
+
+                        <div>
+
+                            <h4>Verified Specialists</h4>
+
+                            <p>
+                                Consult experienced and trusted healthcare professionals.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="feature-item">
+
+                        <div class="feature-icon">
+                            <img src="src/instant.png" alt="Verified Specialists Icon" class="feature-icon-image">
+                        </div>
+
+                        <div>
+
+                            <h4>Instant Appointment Booking</h4>
+
+                            <p>
+                                Schedule doctor consultations within seconds.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="feature-item">
+
+                        <div class="feature-icon">
+                            <img src="src/encrypted.png" alt="Verified Specialists Icon" class="feature-icon-image">
+                        </div>
+
+                        <div>
+
+                            <h4>Secure & Private</h4>
+
+                            <p>
+                                Your medical information stays protected and confidential.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <footer class="footer">
+
+        <div class="footer-container">
+
+            <div class="footer-grid">
+
+                <div class="footer-brand">
+
+                    <div class="logo">
+                        <img src="src/Logo-Mediconnect.png" alt="E-Channeling Logo" id="logo-mediconnect">
+                    </div>
+
+                    <p>
+                        MediConnect connects patients with trusted doctors, hospitals,
+                        and specialists through a secure and convenient digital platform.
+                        Book appointments quickly and access quality healthcare with ease.
+                    </p>
+
+                </div>
+
+                <div class="footer-links">
+
+                    <h4>Quick Links</h4>
+
+                    <a href="index.html">Home</a>
+                    <a href="doctors.html">Doctors</a>
+                    <a href="services.html">Services</a>
+                    <a href="contact.html">Contact</a>
+
+                </div>
+
+                <div class="footer-contact">
+
+                    <h4>Contact</h4>
+
+                    <p>+94 76 7796 934</p>
+                    <p>info@MediConnect.com</p>
+                    <p>FCT, Kelaniya, Sri Lanka</p>
+
+                </div>
+
+            </div>
+            <p>
+                Last Updated:
+                <span id="lastUpdated"></span>
+            </p>
+
+            <div class="footer-bottom">
+
+                <p>
+                    © 2026 MediConnect. All Rights Reserved.
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+    <script src="script.js"></script>
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>     -->
 </body>
+
 </html>
